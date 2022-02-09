@@ -45,6 +45,7 @@
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Liste des livres</h1>
                     </div>
+                    <a href="add.php" class="btn btn-success">Créer un livre</a>
                     <?php 
                         if (isset($_SESSION['error_update_livre']) && $_SESSION['error_update_livre'] == false) {
                             alert('success', 'Le livre est bien ajouté !');

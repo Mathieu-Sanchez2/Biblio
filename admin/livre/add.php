@@ -52,9 +52,9 @@
                 <div class="container-fluid">
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Modifier un livre</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Créer un livre</h1>
                     </div>
-                    <form action="action.php" method="POST">
+                    <form action="action.php" method="POST" enctype="multipart/form-data">
                         <div class="mb-3">
                             <label for="num_isbn" class="form-label">N°ISBN</label>
                             <input type="text" name="num_isbn" class="form-control" id="num_isbn">
@@ -76,15 +76,15 @@
                             <input type="text" name="nb_pages" class="form-control" id="nb_pages">
                         </div>
                         <div class="mb-3">
-                            <label for="disponibilite" class="form-label">Disponibilité :</label>
-                            <input type="text" name="disponibilite" class="form-control" id="disponibilite">
-                        </div>
-                        <div class="mb-3">
                             <label for="date_achat" class="form-label">Date achat</label>
                             <input type="date" name="date_achat" class="form-control" id="date_achat">
                         </div>
+                        <div class="mb-3">
+                            <label for="illustration" class="form-label">Illustration : </label>
+                            <input type="file" name="coucoumaison" class="form-control" id="illustration">
+                        </div>
                         <div class="text-center">
-                            <input type="submit" class="btn btn-primary" name="btn_update_livre" value="Modifier">
+                            <input type="submit" class="btn btn-primary" name="btn_add_livre" value="Modifier">
                         </div>
                     </form>
                 </div>

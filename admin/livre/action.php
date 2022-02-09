@@ -37,3 +37,9 @@ if (isset($_POST['btn_update_livre'])){
     header('location:index.php');
     die;
 }
+
+if (isset($_POST['btn_add_livre'])){
+    var_dump($_POST, $_FILES);
+    // var_dump($_FILES['illustration']['name']);
+    
+}
