@@ -1,5 +1,5 @@
 <?php 
-// 1ER CAR SESSION_START()
+// CONFIG 1ER CAR SESSION_START()
 include '../config/config.php';
 include '../config/bdd.php';
 
@@ -175,6 +175,51 @@ if (isset($_POST['btn_add_livre'])){
         die;
     }
     $_SESSION['error_add_livre'] = false;
+    header('location:index.php');
+    die;
+}
+
+if (isset($_GET['id'])){
+    $id = intval($_GET['id']);
+    if ($id <= 0){
+        // erreur ID incorrect
+        $_SESSION['error_delete_livre'] = true;
+        header('location:index.php');
+        die;
+    }
+    // pour supprimer un livre on doit gerer son illustration
+    // on recupere le nom de l'illustration a supprimer
+    $sql = "SELECT illustration FROM livre WHERE id = ?";
+    $req = $bdd->prepare($sql);
+    $req->execute([$id]);
+    $nom_illustration = $req->fetch(PDO::FETCH_ASSOC);
+    // on stock le nom de l'image apres avoir recuperer l'information en bdd
+    $nom_illustration = $nom_illustration['illustration'];
+    // on vérifie que l'image existe
+    $chemin_illustration = PATH_ADMIN . 'img/illustration/' . $nom_illustration;
+    if (!is_file($chemin_illustration)){
+       // erreur l'illustration n'existe pas
+       $_SESSION['error_delete_illustration'] = true;
+       header('location:index.php'); 
+       die;
+    }
+    if (!unlink($chemin_illustration)){
+        // erreur l'illustration n'est pas supprimer
+        $_SESSION['error_delete_illustration'] = true;
+        header('location:index.php');
+        die;
+    }
+    // on supprime le livre en BDD
+    $sql = "DELETE FROM livre WHERE id = ?";
+    $req = $bdd->prepare($sql);
+    if (!$req->execute([$id])){
+        // erreur le livre n'est pas supprimer
+        $_SESSION['error_delete_livre'] = true;
+        header('location:index.php');
+        die;
+    }
+    $_SESSION['error_delete_livre'] = false;
+    // le livre est bien supprimer
     header('location:index.php');
     die;
 }

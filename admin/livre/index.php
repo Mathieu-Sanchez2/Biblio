@@ -56,6 +56,18 @@
                             alert('success', 'Le livre est bien ajouté en bdd');
                             unset($_SESSION['error_add_livre']);
                         }
+                        if (isset($_SESSION['error_delete_livre']) && $_SESSION['error_delete_livre'] == false){
+                            alert('success', 'Le livre est bien supprimer');
+                            unset($_SESSION['error_delete_livre']);
+                        }
+                        if (isset($_SESSION['error_delete_livre']) && $_SESSION['error_delete_livre'] == true){
+                            alert('danger', 'Le livre n\'est pas supprimer');
+                            unset($_SESSION['error_delete_livre']);
+                        }
+                        if (isset($_SESSION['error_delete_illustration']) && $_SESSION['error_delete_illustration'] == true){
+                            alert('danger', 'L\'illustration ne peut être supprimer');
+                            unset($_SESSION['error_delete_illustration']);
+                        }
                     ?>
                     <table class="table">
                         <thead>
