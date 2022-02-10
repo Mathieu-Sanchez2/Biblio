@@ -1,7 +1,7 @@
 <?php 
     include '../config/config.php';
     include '../config/bdd.php';
-    var_dump($_SESSION);
+    // var_dump($_SESSION);
     // création de la requete SQL
     $sql = 'SELECT * FROM livre';
     // on execute la requete
@@ -9,6 +9,7 @@
     // on recupere les données
     $livres = $requete->fetchAll(PDO::FETCH_ASSOC);
     // var_dump($livres);
+    
 
 
 ?>
@@ -45,7 +46,7 @@
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Liste des livres</h1>
                     </div>
-                    <a href="add.php" class="btn btn-success">Créer un livre</a>
+                    <a href="add.php" class="btn btn-success my-2">Ajouter un livre</a>
                     <?php 
                         if (isset($_SESSION['error_update_livre']) && $_SESSION['error_update_livre'] == false) {
                             alert('success', 'Le livre est bien ajouté !');
@@ -69,7 +70,8 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($livres as $livre) : ?>
+                            <?php foreach ($livres as $livre) :
+                                $date = date_create($livre['date_achat']); ?>
                                 <tr>
                                     <td><?= $livre['id'] ?></td>
                                     <td><?= $livre['num_ISBN'] ?></td>
@@ -77,7 +79,7 @@
                                     <td><?= $livre['titre'] ?></td>
                                     <td><?= substr($livre['resume'], 0, 100) ?> [...]</td>
                                     <td><?= $livre['prix'] ?> €</td>
-                                    <td><?= $livre['date_achat'] ?></td>
+                                    <td><?= $date->format('d/m/Y') ?></td>
                                     <td><?= $livre['nb_pages'] ?></td>
                                     <td><?= $livre['disponibilite'] ?></td>
                                     <td><a href="<?php echo URL_ADMIN ?>livre/update.php?id=<?php echo $livre['id'] ?>" class="btn btn-warning">modifier</a></td>

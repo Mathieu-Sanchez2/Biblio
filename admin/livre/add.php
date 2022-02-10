@@ -1,25 +1,6 @@
 <?php 
     include '../config/config.php';
     include '../config/bdd.php';
-    var_dump($_GET);
-    if (isset($_GET['id'])){
-        $id = intval($_GET['id']);
-        if ($id > 0){
-            // création de la req SQL
-            $sql = "SELECT * FROM livre WHERE id= :id";
-            // preparation de la requete
-            $requete = $bdd->prepare($sql);
-            // tableau de données
-            $data = [':id' => $id];
-            $requete->execute($data);
-            // recupération des infos
-            $livre = $requete->fetch(pdo::FETCH_ASSOC);
-            var_dump($livre);
-        }else{
-            header('location:index.php');
-            die;
-        }
-    }
 ?>
 <!DOCTYPE html>
 <html lang="fr">

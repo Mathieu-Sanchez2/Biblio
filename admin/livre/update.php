@@ -1,7 +1,7 @@
 <?php 
     include '../config/config.php';
     include '../config/bdd.php';
-    var_dump($_SESSION);
+    // var_dump($_SESSION);
     if (isset($_GET['id'])){
         $id = intval($_GET['id']);
         if ($id > 0){
