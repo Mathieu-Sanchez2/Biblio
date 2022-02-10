@@ -35,6 +35,16 @@
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Créer un livre</h1>
                     </div>
+                    <?php 
+                        if (isset($_SESSION['error_illustration']) && $_SESSION['error_illustration'] == true){
+                            alert('danger', 'L\'illustration n\'est pas correctement déplacer ou n\'est pas valide');
+                            unset($_SESSION['error_illustration']);
+                        }
+                        if (isset($_SESSION['error_add_livre']) && $_SESSION['error_add_livre'] == true){
+                            alert('danger', 'Le livre n\'a pas été ajouté correctement');
+                            unset($_SESSION['error_add_livre']);
+                        }
+                    ?>
                     <form action="action.php" method="POST" enctype="multipart/form-data">
                         <div class="mb-3">
                             <label for="num_isbn" class="form-label">N°ISBN</label>
@@ -45,7 +55,7 @@
                             <input type="text" name="titre" class="form-control" id="titre">
                         </div>
                         <div class="mb-3">
-                            <label for="resume" class="form-label">Résumer</label>
+                            <label for="resume" class="form-label">Résumé</label>
                             <input type="text" name="resume" class="form-control" id="resume">
                         </div>
                         <div class="mb-3">
@@ -62,10 +72,10 @@
                         </div>
                         <div class="mb-3">
                             <label for="illustration" class="form-label">Illustration : </label>
-                            <input type="file" name="coucoumaison" class="form-control" id="illustration">
+                            <input type="file" name="illustration" class="form-control" id="illustration">
                         </div>
                         <div class="text-center">
-                            <input type="submit" class="btn btn-primary" name="btn_add_livre" value="Modifier">
+                            <input type="submit" class="btn btn-success" name="btn_add_livre" value="Ajouter">
                         </div>
                     </form>
                 </div>

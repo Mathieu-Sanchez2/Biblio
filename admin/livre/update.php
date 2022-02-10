@@ -1,7 +1,7 @@
 <?php 
     include '../config/config.php';
     include '../config/bdd.php';
-    // var_dump($_SESSION);
+    var_dump($_SESSION);
     if (isset($_GET['id'])){
         $id = intval($_GET['id']);
         if ($id > 0){
@@ -60,7 +60,7 @@
                             unset($_SESSION['error_update_livre']);
                         }
                     ?>
-                    <form action="action.php" method="POST">
+                    <form action="action.php" method="POST" enctype="multipart/form-data">
                         <input type="hidden" name="id" value="<?php echo $livre['id'] ?>">
                         <div class="mb-3">
                             <label for="num_isbn" class="form-label">N°ISBN</label>
@@ -89,6 +89,17 @@
                         <div class="mb-3">
                             <label for="date_achat" class="form-label">Date achat</label>
                             <input type="date" name="date_achat" class="form-control" id="date_achat" value="<?php echo $livre['date_achat'] ?>">
+                        </div>
+                        <div class="mb-3 row">
+                            
+                            <div class="col">
+                                <label for="illustration" class="form-label">Illustration :</label>
+                                <input type="file" name="illustration" class="form-control" id="illustration">
+                            </div>
+                            <div class="col">
+                                <p>Illustration actuelle :</p>
+                                <img src="<?= URL_ADMIN ?>/img/illustration/<?= $livre['illustration'] ?>" alt="illustration <?= $livre['titre'] ?>" height="250px" width="250px">
+                            </div>
                         </div>
                         <div class="text-center">
                             <input type="submit" class="btn btn-primary" name="btn_update_livre" value="Modifier">

@@ -49,8 +49,12 @@
                     <a href="add.php" class="btn btn-success my-2">Ajouter un livre</a>
                     <?php 
                         if (isset($_SESSION['error_update_livre']) && $_SESSION['error_update_livre'] == false) {
-                            alert('success', 'Le livre est bien ajouté !');
+                            alert('success', 'Le livre est bien modifier !');
                             unset($_SESSION['error_update_livre']);
+                        }
+                        if (isset($_SESSION['error_add_livre']) && $_SESSION['error_add_livre'] == false){
+                            alert('success', 'Le livre est bien ajouté en bdd');
+                            unset($_SESSION['error_add_livre']);
                         }
                     ?>
                     <table class="table">
