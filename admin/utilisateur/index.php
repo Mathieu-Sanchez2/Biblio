@@ -1,5 +1,11 @@
 <?php 
     include '../config/config.php';
+    include '../config/bdd.php';
+
+    $sql = "SELECT * FROM utilisateur";
+    $req = $bdd->query($sql);
+    $utilisateurs = $req->fetchAll(PDO::FETCH_ASSOC);
+    // var_dump($utilisateurs);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -34,6 +40,37 @@
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Liste des utilisateurs</h1>
                     </div>
+                    <a href="add.php" class="btn btn-primary my-3">Ajouter un utilisateur</a>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Nom</th>
+                                <th scope="col">Prénom</th>
+                                <th scope="col">Mail</th>
+                                <th scope="col">Téléphone</th>
+                                <th scope="col">Adresse</th>
+                                <th scope="col">Avatar</th>
+                                <th scope="col">Modifer</th>
+                                <th scope="col">Supprimer</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach($utilisateurs as $utilisateur) : ?>
+                                <tr>
+                                    <td><?= $utilisateur['id'] ?></td>
+                                    <td><?= $utilisateur['nom'] ?></td>
+                                    <td><?= $utilisateur['prenom'] ?></td>
+                                    <td><?= $utilisateur['mail'] ?></td>
+                                    <td><?= $utilisateur['num_telephone'] ?></td>
+                                    <td><?= $utilisateur['adresse'] . ',' . $utilisateur['ville'] . ' ' . $utilisateur['code_postal']?></td>
+                                    <td><img width="75px" height="75px" src="<?= URL_ADMIN ?>img/avatar/<?= $utilisateur['avatar'] ?>" alt=""></td>
+                                    <td><a href="" class="btn btn-warning">Modifier</a></td>
+                                    <td><a href="action.php?id=<?= $utilisateur['id'] ?>" class="btn btn-danger">Supprimer</a></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
                 </div>
                 <!-- /.container-fluid -->
             </div>
