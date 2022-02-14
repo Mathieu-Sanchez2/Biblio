@@ -9,8 +9,7 @@ function alert($couleur = "success", $message){ ?>
 
 
 function isConnect(){
-    $a $ true;
-    if (isset($_SESSION['connect']) && $_SESSION['connect'] = true || $a = true){
+    if (isset($_SESSION['connect']) && $_SESSION['connect'] = true){
         return true;
     }
     return false;
