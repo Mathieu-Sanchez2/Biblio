@@ -17,6 +17,8 @@ if (isset($_POST['btn_connect'])){
     $req->execute([$mail]);
     $user = $req->fetch(PDO::FETCH_ASSOC);
     // var_dump($user);
+    // var_dump(password_verify($mdp, $user['mot_de_passe']));
+    // die;
     if (!$user){
         // erreur 
         // $_SESSION 
@@ -35,5 +37,13 @@ if (isset($_POST['btn_connect'])){
     $_SESSION['date_connect'] = new DateTime();
     $_SESSION['connect'] = true;
     header('location:index.php');
+    die;
+}
+
+if (isset($_GET['connect']) && $_GET['connect'] == "false"){
+    // var_dump($_GET);
+    // session_destroy(); (cf doc)
+    $_SESSION = [];
+    header('location:../index.php');
     die;
 }

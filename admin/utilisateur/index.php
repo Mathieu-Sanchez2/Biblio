@@ -1,7 +1,10 @@
 <?php 
     include '../config/config.php';
+    if (!isConnect()){
+        header('location:' . URL_ADMIN . 'login.php');
+        die; 
+    }
     include '../config/bdd.php';
-
     $sql = "SELECT * FROM utilisateur";
     $req = $bdd->query($sql);
     $utilisateurs = $req->fetchAll(PDO::FETCH_ASSOC);

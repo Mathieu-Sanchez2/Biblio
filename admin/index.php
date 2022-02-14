@@ -1,8 +1,8 @@
 <?php 
     include 'config/config.php';
     if (!isConnect()){
-        header('location:login.php');
-        die;
+        header('location:' . URL_ADMIN . 'login.php');
+        die; 
     }
 ?>
 <!DOCTYPE html>
@@ -38,7 +38,7 @@
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Tableau de bord</h1>
                     </div>
-                        <?= var_dump($_SESSION); ?>
+                        <?= password_hash('azerty', PASSWORD_DEFAULT); ?>
                 </div>
                 <!-- /.container-fluid -->
                 

@@ -1,5 +1,9 @@
 <?php 
     include '../config/config.php';
+    if (!isConnect()){
+        header('location:' . URL_ADMIN . 'login.php');
+        die; 
+    }
     include '../config/bdd.php';
     // var_dump($_SESSION);
     // création de la requete SQL

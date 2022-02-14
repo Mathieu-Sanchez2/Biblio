@@ -1,3 +1,10 @@
+<?php 
+  include 'config/config.php';
+    if (isConnect()){
+      header('location:index.php');
+      die;
+  }
+?>
 <!doctype html>
 <html lang="fr">
   <head>

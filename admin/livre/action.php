@@ -1,6 +1,10 @@
 <?php 
 // CONFIG 1ER CAR SESSION_START()
 include '../config/config.php';
+if (!isConnect()){
+    header('location:' . URL_ADMIN . 'login.php');
+    die; 
+}
 include '../config/bdd.php';
 
 if (isset($_POST['btn_update_livre'])){

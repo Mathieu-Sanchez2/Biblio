@@ -1,4 +1,8 @@
 <?php 
+    if (!isConnect()){
+        header('location:' . URL_ADMIN . 'login.php');
+        die; 
+    }
     /**
      * Traitement des données du formulaire
      * 1) sécuriser les données en entrée
