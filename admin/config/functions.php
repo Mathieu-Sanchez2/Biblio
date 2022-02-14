@@ -6,3 +6,12 @@ function alert($couleur = "success", $message){ ?>
         <?= $message; ?>
     </div>
 <?php }
+
+
+function isConnect(){
+    $a $ true;
+    if (isset($_SESSION['connect']) && $_SESSION['connect'] = true || $a = true){
+        return true;
+    }
+    return false;
+}
