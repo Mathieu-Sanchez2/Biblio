@@ -6,6 +6,7 @@
     }
     include '../config/bdd.php';
     $sql = "SELECT * FROM utilisateur";
+    // $sql = "";
     $req = $bdd->query($sql);
     $utilisateurs = $req->fetchAll(PDO::FETCH_ASSOC);
     // var_dump($utilisateurs);

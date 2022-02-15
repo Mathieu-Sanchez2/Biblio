@@ -16,7 +16,7 @@
   <body>
     <div class="container">
         <h1 class="text-center">Login :</h1>
-        <form action="action.php" method="POST">
+        <form action="<?= URL_ADMIN ?>action.php" method="POST">
             <div class="mb-3">
                 <label for="mail" class="form-label">Adresse mail : </label>
                 <input type="email" name="mail" class="form-control" id="mail">
@@ -26,7 +26,7 @@
                 <input type="password" name="mdp" class="form-control" id="mdp">
             </div>
             <div class="mb-3 text-center">
-                <input type="submit" class="btn btn-primary" name="btn_connect" value="Connection">
+                <input type="submit" class="btn btn-primary" name="btn_connect" value="Connexion">
             </div>
         </form>
     </div>

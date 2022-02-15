@@ -1,13 +1,9 @@
 <?php 
     include 'config/config.php';
-    if (!isConnect()){
-        header('location:' . URL_ADMIN . 'login.php');
-        die; 
-    }
     include 'config/bdd.php';
 
 if (isset($_POST['btn_connect'])){
-    var_dump($_POST);
+    // var_dump($_POST);
     /**
      * TRAITEMENT DES DONNEES
     */
@@ -21,8 +17,8 @@ if (isset($_POST['btn_connect'])){
     $req->execute([$mail]);
     $user = $req->fetch(PDO::FETCH_ASSOC);
     // var_dump($user);
-    // var_dump(password_verify($mdp, $user['mot_de_passe']));
     // die;
+    // var_dump(password_verify($mdp, $user['mot_de_passe']));
     if (!$user){
         // erreur 
         // $_SESSION 
@@ -38,8 +34,11 @@ if (isset($_POST['btn_connect'])){
     }
     unset($user['mot_de_passe']);
     $_SESSION['user'] = $user;
-    $_SESSION['date_connect'] = new DateTime();
+    $_SESSION['date_connect'] = new DateTime();   
+    $_SESSION['user']['roles'] = checkRoles($user['id'], $bdd);    
     $_SESSION['connect'] = true;
+    // var_dump($_SESSION);
+    // die;
     header('location:index.php');
     die;
 }
