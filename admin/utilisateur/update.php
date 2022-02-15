@@ -4,6 +4,7 @@
         header('location:' . URL_ADMIN . 'login.php');
         die; 
     }
+    // ACCESIBLE SEULEMENT SI ADMINISTRATEUR
 ?>
 <!DOCTYPE html>
 <html lang="fr">

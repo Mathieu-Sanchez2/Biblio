@@ -5,6 +5,7 @@ if (!isConnect()){
     header('location:' . URL_ADMIN . 'login.php');
     die; 
 }
+// ACCESIBLE SEULEMENT SI ADMINISTRATEUR
 include '../config/bdd.php';
 
 

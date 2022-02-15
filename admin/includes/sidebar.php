@@ -142,6 +142,9 @@
                     <span>Prise de contacts</span></a>
             </li>
             <!-- End Nav Item - Prise de contact -->
+        
+            <!-- ************************************ -->
+            <!-- AFFICHER SEULEMENT SI ADMINISTRATEUR -->
             <!-- Nav Item - Utilisateur -->
             <li class="nav-item">
                 <a class="nav-link" href="<?= URL_ADMIN ?>utilisateur/">
@@ -149,6 +152,9 @@
                     <span>Utilisateur</span></a>
             </li>
             <!-- End Nav Item - Utilisateur -->
+            <!-- FIN AFFICHER SEULEMENT SI ADMINISTRATEUR -->
+            <!-- ************************************ -->
+
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
             <!-- Sidebar Toggler (Sidebar) -->
