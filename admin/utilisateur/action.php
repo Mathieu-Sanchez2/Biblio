@@ -6,6 +6,10 @@ if (!isConnect()){
     die; 
 }
 // ACCESIBLE SEULEMENT SI ADMINISTRATEUR
+if (!isAdmin()){
+    header('location:' . URL_ADMIN . 'index.php');
+    die; 
+}
 include PATH_ADMIN . 'config/bdd.php';
 
 

@@ -5,6 +5,10 @@
         die; 
     }
     // ACCESIBLE SEULEMENT SI ADMINISTRATEUR
+    if (!isAdmin()){
+        header('location:' . URL_ADMIN . 'index.php');
+        die; 
+    }
 ?>
 <!DOCTYPE html>
 <html lang="fr">

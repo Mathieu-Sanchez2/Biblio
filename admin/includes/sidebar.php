@@ -146,11 +146,14 @@
             <!-- ************************************ -->
             <!-- AFFICHER SEULEMENT SI ADMINISTRATEUR -->
             <!-- Nav Item - Utilisateur -->
-            <li class="nav-item">
-                <a class="nav-link" href="<?= URL_ADMIN ?>utilisateur/">
-                    <i class="fas fa-user"></i>
-                    <span>Utilisateur</span></a>
-            </li>
+            <?php if (isAdmin()) : ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= URL_ADMIN ?>utilisateur/">
+                        <i class="fas fa-user"></i>
+                        <span>Utilisateur</span>
+                    </a>
+                </li>
+            <?php endif; ?>
             <!-- End Nav Item - Utilisateur -->
             <!-- FIN AFFICHER SEULEMENT SI ADMINISTRATEUR -->
             <!-- ************************************ -->

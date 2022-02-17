@@ -5,6 +5,10 @@
         die; 
     }
     // ACCESIBLE SEULEMENT SI ADMINISTRATEUR
+    if (!isAdmin()){
+        header('location:' . URL_ADMIN . 'index.php');
+        die; 
+    }
     include PATH_ADMIN . 'config/bdd.php';
     $sql = "SELECT * FROM utilisateur";
     $req = $bdd->query($sql);

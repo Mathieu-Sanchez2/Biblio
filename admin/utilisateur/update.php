@@ -4,7 +4,11 @@
         header('location:' . URL_ADMIN . 'login.php');
         die; 
     }
-    // TODO : ACCESIBLE SEULEMENT SI ADMINISTRATEUR
+    // ACCESIBLE SEULEMENT SI ADMINISTRATEUR
+    if (!isAdmin()){
+        header('location:' . URL_ADMIN . 'index.php');
+        die; 
+    }
 ?>
 <!DOCTYPE html>
 <html lang="fr">

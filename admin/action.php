@@ -30,7 +30,7 @@ if (isset($_POST['btn_connect'])){
     unset($user['mot_de_passe']);
     $_SESSION['user'] = $user;
     $_SESSION['date_connect'] = new DateTime();   
-    $_SESSION['user']['roles'] = checkRoles($user['id'], $bdd);    
+    checkRoles($user['id'], $bdd);    
     $_SESSION['connect'] = true;
     header('location:index.php');
     die;
@@ -39,6 +39,6 @@ if (isset($_POST['btn_connect'])){
 if (isset($_GET['connect']) && $_GET['connect'] == "false"){
     // session_destroy(); (cf doc)
     $_SESSION = [];
-    header('location:' . PATH_ADMIN . 'index.php');
+    header('location:' . URL_ADMIN . 'index.php');
     die;
 }
