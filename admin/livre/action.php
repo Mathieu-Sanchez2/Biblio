@@ -5,7 +5,7 @@ if (!isConnect()){
     header('location:' . URL_ADMIN . 'login.php');
     die; 
 }
-include '../config/bdd.php';
+include PATH_ADMIN . 'config/bdd.php';
 
 if (isset($_POST['btn_update_livre'])){
         /**
@@ -27,8 +27,6 @@ if (isset($_POST['btn_update_livre'])){
       * 4) Executer la requete (si prepare() est utiliser)
       * 5) Récuperer les données au format désirer avec un fetch(PDO::FETCH_ASSOC) ou fetchAll(PDO::FETCH_ASSOC)
       */
-    // var_dump($_POST);
-    
     $id = intval($_POST['id']);
     if ($id <= 0) {
         // erreur
@@ -56,7 +54,6 @@ if (isset($_POST['btn_update_livre'])){
         $hold_illustration = $req->fetch(PDO::FETCH_ASSOC);
         $hold_illustration = $hold_illustration['illustration'];
         $chemin_hold_illustration = PATH_ADMIN . 'img/illustration/' . $hold_illustration;
-        var_dump($chemin_hold_illustration);
         // GESTION DE L'ANCIENNE ILLUSTRATION
         if (!is_file($chemin_hold_illustration)){
             // erreur le fichier enregistrer n'existe pas dans le dossier
@@ -107,8 +104,6 @@ if (isset($_POST['btn_update_livre'])){
     }
     $requete = $bdd->prepare($sql);
     if (!$requete->execute($data)){
-        // var_dump($requete->errorInfo());
-        // die;
         $_SESSION['error_update_livre'] = true;
         $_SESSION['error_form'] = $_POST;
         header('location:update.php?id='.$id);
@@ -144,9 +139,7 @@ if (isset($_POST['btn_add_livre'])){
     $dossier_temporaire  = $_FILES['illustration']['tmp_name'];
     // on enregistre l'endroit de destination
     $dossier_destination  = PATH_ADMIN . 'img/illustration/' . $illustration;
-    // var_dump($dossier_temporaire, $dossier_destination);
     if (!move_uploaded_file($dossier_temporaire, $dossier_destination)){
-        die('nok');
         // erreur le document n'as pas était correctement déplacé
         $_SESSION['error_illustration'] = true;
         header('location:add.php');
@@ -173,7 +166,6 @@ if (isset($_POST['btn_add_livre'])){
     ];
     if (!$requete->execute($data)){
         // erreur dans l'ajout
-        // var_dump($requete->errorInfo());
         $_SESSION['error_add_livre'] = false;
         header('location:add.php');
         die;

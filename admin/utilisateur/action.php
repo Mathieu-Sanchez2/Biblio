@@ -6,11 +6,10 @@ if (!isConnect()){
     die; 
 }
 // ACCESIBLE SEULEMENT SI ADMINISTRATEUR
-include '../config/bdd.php';
+include PATH_ADMIN . 'config/bdd.php';
 
 
  if (isset($_POST['btn_add_utilisateur'])){
-     var_dump($_POST, $_FILES);
      $nom = htmlentities($_POST['nom']);
      $prenom = htmlentities($_POST['prenom']);
      $pseudo = htmlentities($_POST['pseudo']);
@@ -44,8 +43,6 @@ include '../config/bdd.php';
      ];
     if (!$req->execute($data)){
         // erreur ajout en bdd
-        var_dump($req->errorInfo());
-        die;
         header('location:add.php');
         die;
     }
@@ -71,9 +68,7 @@ if(isset($_GET['id'])){
     $req->execute([$id]);
     $hold_avatar = $req->fetch(PDO::FETCH_ASSOC);
     $hold_avatar = $hold_avatar['avatar'];
-
     $dossier_avatar = PATH_ADMIN . 'img/avatar/' . $hold_avatar;
-    var_dump($dossier_avatar);
     if (!is_file($dossier_avatar)){
         // erreur l'avatar n'existe pas ou plus dans le dossier
         header('location:index.php');

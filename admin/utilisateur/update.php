@@ -4,7 +4,7 @@
         header('location:' . URL_ADMIN . 'login.php');
         die; 
     }
-    // ACCESIBLE SEULEMENT SI ADMINISTRATEUR
+    // TODO : ACCESIBLE SEULEMENT SI ADMINISTRATEUR
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -25,13 +25,13 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
         <?php
-            include '../includes/sidebar.php';
+            include PATH_ADMIN . 'includes/sidebar.php';
         ?>
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
             <!-- Main Content -->
             <?php
-                    include '../includes/topbar.php';
+                    include PATH_ADMIN . 'includes/topbar.php';
                 ?>
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
@@ -44,7 +44,7 @@
             </div>
             <!-- End of Main Content -->
             <?php
-                include '../includes/footer.php';
+                include  PATH_ADMIN . 'includes/footer.php';
             ?>
 </body>
 </html>

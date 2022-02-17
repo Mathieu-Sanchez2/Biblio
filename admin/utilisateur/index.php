@@ -5,12 +5,10 @@
         die; 
     }
     // ACCESIBLE SEULEMENT SI ADMINISTRATEUR
-    include '../config/bdd.php';
+    include PATH_ADMIN . 'config/bdd.php';
     $sql = "SELECT * FROM utilisateur";
-    // $sql = "";
     $req = $bdd->query($sql);
     $utilisateurs = $req->fetchAll(PDO::FETCH_ASSOC);
-    // var_dump($utilisateurs);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -81,7 +79,7 @@
             </div>
             <!-- End of Main Content -->
             <?php
-                include '../includes/footer.php';
+                include PATH_ADMIN . '/includes/footer.php';
             ?>
 </body>
 </html>
