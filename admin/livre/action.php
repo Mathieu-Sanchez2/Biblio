@@ -115,7 +115,6 @@ if (isset($_POST['btn_update_livre'])){
 }
 
 if (isset($_POST['btn_add_livre'])){
-    var_dump($_POST, $_FILES);
     /**
      * Traitement des données du formulaire
      * 1) sécuriser les données en entrée
@@ -128,7 +127,7 @@ if (isset($_POST['btn_add_livre'])){
     */
     $num_isbn = htmlentities($_POST['num_isbn']);
     $titre = htmlentities($_POST['titre']);
-    $resume = htmlentities($_POST['resume']);
+    $resume = $_POST['resume'];
     $prix = htmlentities($_POST['prix']);
     $nb_pages = htmlentities($_POST['nb_pages']);
     $date_achat = htmlentities($_POST['date_achat']);
@@ -169,6 +168,21 @@ if (isset($_POST['btn_add_livre'])){
         $_SESSION['error_add_livre'] = false;
         header('location:add.php');
         die;
+    }
+    // GESTION CATEGORIES
+    // recup les id cat, + id livre
+    $id_livre = $bdd->lastInsertId();
+    // var_dump($id_livre);
+    foreach ($_POST['categorie'] as $id_categorie) {
+        $sql = 'INSERT INTO categorie_livre VALUES (:id_categorie, :id_livre)';
+        $req = $bdd->prepare($sql);
+        $data = [
+            ':id_categorie' => $id_categorie,
+            ':id_livre' => $id_livre
+        ];
+        if (!$req->execute($data)){
+            // erreur
+        }
     }
     $_SESSION['error_add_livre'] = false;
     header('location:index.php');

@@ -92,7 +92,7 @@
                                     <td><?= $livre['num_ISBN'] ?></td>
                                     <td>@mdo</td>
                                     <td><a href="single.php?id=<?= $livre['id'] ?>"><?= $livre['titre'] ?></a></td>
-                                    <td><?= substr($livre['resume'], 0, 100) ?> [...]</td>
+                                    <td><?= substr(htmlentities($livre['resume']), 0, 100) ?> [...]</td>
                                     <td><?= $livre['prix'] ?> €</td>
                                     <td><?= $date->format('d/m/Y') ?></td>
                                     <td><?= $livre['nb_pages'] ?></td>
