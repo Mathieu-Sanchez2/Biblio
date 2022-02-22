@@ -41,6 +41,7 @@ if (isset($_POST['btn_update_livre'])){
     $disponibilite = htmlentities($_POST['disponibilite']);
     $date_achat = date_create($_POST['date_achat']);
     $date_achat = $date_achat->format('Y-m-d');
+    $categories = $_POST['categorie'];
     // pour la modification on doit vérifier si l'utilisateur a ajouter une illustration, si il n'as pas changer l'image on doit garder l'ancien nom
     if (!empty($_FILES['illustration']['name'])){
         
@@ -109,6 +110,28 @@ if (isset($_POST['btn_update_livre'])){
         header('location:update.php?id='.$id);
         die;
     }
+
+    // TRAITEMENT DES CATEGORIES
+    $sql = "DELETE FROM categorie_livre WHERE id_livre = ?";
+    $req = $bdd->prepare($sql);
+    if (!$req->execute([$id])) {
+        // erreur dans la suppr en bdd
+        header('location:update.php?id='.$id);
+        die;
+    }
+    foreach ($categories as $id_categorie) {
+        $sql = "INSERT INTO categorie_livre VALUES (:id_categorie, :id_livre)";
+        $data = [
+            ':id_categorie' => $id_categorie,
+            ':id_livre' => $id
+        ];
+        $req = $bdd->prepare($sql);
+        if (!$req->execute($data)){
+            // erreur
+            header('location:update.php?id='.$id);
+            die;
+        }
+    }
     $_SESSION['error_update_livre'] = false;
     header('location:index.php');
     die;
@@ -172,7 +195,6 @@ if (isset($_POST['btn_add_livre'])){
     // GESTION CATEGORIES
     // recup les id cat, + id livre
     $id_livre = $bdd->lastInsertId();
-    // var_dump($id_livre);
     foreach ($_POST['categorie'] as $id_categorie) {
         $sql = 'INSERT INTO categorie_livre VALUES (:id_categorie, :id_livre)';
         $req = $bdd->prepare($sql);
@@ -182,6 +204,8 @@ if (isset($_POST['btn_add_livre'])){
         ];
         if (!$req->execute($data)){
             // erreur
+            header('location:add.php');
+            die;
         }
     }
     $_SESSION['error_add_livre'] = false;

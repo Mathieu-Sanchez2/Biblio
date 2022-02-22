@@ -91,7 +91,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="cat" class="form-label">Catégories</label>
-                            <select class="select-cat" name="categorie[]" multiple id="cat">
+                            <select class="mt-1 select-cat" name="categorie[]" multiple id="cat">
                                 <?php  foreach($categories as $categorie) : ?>
                                     <option value="<?= $categorie['id'] ?>"><?= $categorie['libelle'] ?></option>
                                 <?php endforeach; ?>

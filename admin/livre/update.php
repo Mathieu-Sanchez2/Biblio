@@ -22,6 +22,24 @@
             die;
         }
     }
+    $sql = "SELECT * FROM categorie";
+    $req = $bdd->query($sql);
+    $categories = $req->fetchAll(PDO::FETCH_ASSOC);
+
+    $sql = "SELECT id_categorie FROM categorie_livre WHERE id_livre = ?";
+    $req = $bdd->prepare($sql);
+    $req->execute([$id]);
+    $categorie_livre = $req->fetchAll(PDO::FETCH_NUM);
+    $categorie_id = [];
+    if (count($categorie_livre) >= 1){
+        // stocker toutes les valeurs reçus dans 1 seul tableau
+        foreach ($categorie_livre as $id_categorie){
+            $categorie_id[] = implode('', $id_categorie);
+        }
+    }else{
+        $categorie_id = $categorie_livre[0];
+    }
+    // var_dump($categorie_id);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -37,6 +55,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <!-- Custom styles for this template-->
     <link href="<?= URL_ADMIN ?>css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 </head>
 <body id="page-top">
     <!-- Page Wrapper -->
@@ -93,12 +112,23 @@
                             <input type="date" name="date_achat" class="form-control" id="date_achat" value="<?php echo $livre['date_achat'] ?>">
                         </div>
                         <div class="mb-3 row">
-                            
-                            <div class="col">
+                            <div class="mb-3 col">
                                 <label for="illustration" class="form-label">Illustration :</label>
                                 <input type="file" name="illustration" class="form-control" id="illustration">
+                                <label for="categorie" class="form-label mt-4">Catégories :</label><br>
+                                <select name="categorie[]" id="categorie" multiple class="mt-1 select-cat">
+                                    <?php foreach($categories as $categorie) : ?>
+                                        <?php if (in_array($categorie['id'], $categorie_id)) {
+                                            $selected = "selected";
+                                        }else{
+                                            $selected = "";
+                                        } ?>
+                                            <option value="<?= $categorie['id'] ?>" <?= $selected ?>><?= $categorie['libelle'] ?></option>
+                                        
+                                    <?php endforeach; ?>
+                                </select>
                             </div>
-                            <div class="col">
+                            <div class="mb-3 col">
                                 <p>Illustration actuelle :</p>
                                 <img src="<?= URL_ADMIN ?>/img/illustration/<?= $livre['illustration'] ?>" alt="illustration <?= $livre['titre'] ?>" height="250px" width="250px">
                             </div>
@@ -114,5 +144,9 @@
             <?php
                 include PATH_ADMIN . 'includes/footer.php';
             ?>
+            <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+            <script>
+                $('.select-cat').select2();
+            </script>
 </body>
 </html>
