@@ -74,7 +74,7 @@
                             </div>
                         </div>
                         <div class="mb-3 text-center">
-                            <input type="submit" value="Modifier" name="btn_add_editeur" class="btn btn-primary">
+                            <input type="submit" value="Ajouter" name="btn_add_editeur" class="btn btn-primary">
                         </div>
                     </form>
                 </div>

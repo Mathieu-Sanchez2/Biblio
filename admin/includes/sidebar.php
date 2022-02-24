@@ -146,7 +146,7 @@
             <!-- ************************************ -->
             <!-- AFFICHER SEULEMENT SI ADMINISTRATEUR -->
             <!-- Nav Item - Utilisateur -->
-            <?php if (isAdmin()) : ?>
+            <?php if (isAdmin() || isRoot()) : ?>
                 <li class="nav-item">
                     <a class="nav-link" href="<?= URL_ADMIN ?>utilisateur/">
                         <i class="fas fa-user"></i>

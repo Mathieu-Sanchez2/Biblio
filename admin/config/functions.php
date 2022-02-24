@@ -61,6 +61,20 @@ function isAdmin(){
      */
     return in_array('Admin', $_SESSION['user']['roles']);
 }
+/**
+ * isRoot() 
+ * Fonction qui retourne un booléan 
+ * en fonction de si l'utilisateur a le rôle root ou non
+ * @return boolean
+ */
+function isRoot(){
+    /**
+     * Doit vérifier si le tableau ['roles'] en session contient le nom du role recherché
+     * Si oui alors l'utilisateur a le role recherché
+     * Sinon l'utilisateur n'a pas le role recherché
+     */
+    return in_array('root', $_SESSION['user']['roles']);
+}
 
 /**
  * isSalarie() 
