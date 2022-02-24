@@ -1,5 +1,9 @@
 <?php 
     include '../config/config.php';
+    if (!isConnect()){
+        header('location:' . URL_ADMIN . 'login.php');
+        die; 
+    }
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -32,8 +36,17 @@
                 <div class="container-fluid">
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Ajouter une catégorie</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Ajouter une categorie</h1>
                     </div>
+                    <form action="action.php" method="POST">
+                        <div class="mb-3">
+                            <label for="libelle" class="form-label">Libelle</label>
+                            <input type="text" class="form-control" id="libelle" name="libelle">
+                        </div>
+                        <div class="mb-3 text-center">
+                            <input type="submit" value="Ajouter" name="btn_add_categorie" class="btn btn-primary">
+                        </div>
+                    </form>
                 </div>
                 <!-- /.container-fluid -->
             </div>
