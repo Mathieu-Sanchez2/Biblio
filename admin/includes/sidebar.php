@@ -108,8 +108,8 @@
                 <div id="collapseEditeur" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Gestion des Editeurs :</h6>
-                        <a class="collapse-item" href="<?= URL_ADMIN ?>categorie/index.php">Liste des editeurs</a>
-                        <a class="collapse-item" href="<?= URL_ADMIN ?>categorie/add.php">Ajouter un editeur</a>
+                        <a class="collapse-item" href="<?= URL_ADMIN ?>editeur/index.php">Liste des editeurs</a>
+                        <a class="collapse-item" href="<?= URL_ADMIN ?>editeur/add.php">Ajouter un editeur</a>
                     </div>
                 </div>
             </li>
