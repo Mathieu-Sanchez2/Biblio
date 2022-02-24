@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mar. 22 fév. 2022 à 14:33
+-- Généré le : jeu. 24 fév. 2022 à 16:34
 -- Version du serveur : 5.7.36
 -- Version de PHP : 7.4.26
 
@@ -63,14 +63,15 @@ CREATE TABLE IF NOT EXISTS `auteur` (
   `numero` varchar(10) NOT NULL,
   `photo` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `auteur`
 --
 
 INSERT INTO `auteur` (`id`, `nom`, `prenom`, `nom_de_plume`, `adresse`, `ville`, `code_postal`, `mail`, `numero`, `photo`) VALUES
-(1, 'Rowling', 'Joanne', 'J.K Rowling', '123 rue des patates', 'Paris', '75001', 'jk-rowling@biblio.fr', '0102030405', 'jk-rowling.png');
+(1, 'Rowling', 'Joanne', 'J.K Rowling', '123 rue des patates', 'Paris', '75001', 'jk-rowling@biblio.fr', '0102030405', 'jk-rowling.png'),
+(3, 'testAddAuteur', 'testAddAuteur', 'testAddAuteur', '159 av testAddAuteur', 'Bayonne', '64100', 'testAddAuteur@testAddAuteur.fr', '0504020301', 'user2.png');
 
 -- --------------------------------------------------------
 
@@ -110,7 +111,7 @@ CREATE TABLE IF NOT EXISTS `categorie` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `libelle` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `categorie`
@@ -126,7 +127,9 @@ INSERT INTO `categorie` (`id`, `libelle`) VALUES
 (7, 'Cuisine'),
 (8, 'Science-fiction'),
 (9, 'Manga'),
-(10, 'Informatique');
+(10, 'Informatique'),
+(13, 'DemoAddCat'),
+(14, 'DemoUpdateCat');
 
 -- --------------------------------------------------------
 
@@ -204,14 +207,15 @@ CREATE TABLE IF NOT EXISTS `editeur` (
   `mail` varchar(255) NOT NULL,
   `numero_tel` varchar(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `editeur`
 --
 
 INSERT INTO `editeur` (`id`, `denomination`, `siret`, `adresse`, `ville`, `code_postal`, `mail`, `numero_tel`) VALUES
-(1, 'Gallimard Jeunesse', '12345678912345', '123 rue des cerises', 'Pau', '64000', 'galimard@biblio.fr', '0504030201');
+(1, 'Gallimard Jeunesse', '12345678912345', '123 rue des cerises', 'Pau', '64000', 'galimard@biblio.fr', '0504030201'),
+(3, 'demoAddEditeur', '12345698742356', '652 Avenue des demoAddEditeur', 'Dax', '40100', 'demoAddEditeur@demoAddEditeur.fr', '0102030405');
 
 -- --------------------------------------------------------
 
@@ -298,7 +302,7 @@ CREATE TABLE IF NOT EXISTS `livre` (
 --
 
 INSERT INTO `livre` (`id`, `num_ISBN`, `titre`, `illustration`, `resume`, `prix`, `nb_pages`, `date_achat`, `disponibilite`) VALUES
-(1, '123-456-789', 'Harry potter 2', 'illustration2.jpg', 'Lor&eacute;m Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 19.99, 433, '2022-01-30', 0),
+(1, '123-456-777', 'Harry potter 2', 'illustration2.jpg', 'Lor&eacute;m Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 19.99, 433, '2022-01-30', 0),
 (2, '894-321-654', 'Harry potter 3', 'illustration3.jpg', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum hsages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 14.99, 422, '2022-01-18', 0),
 (3, '123-789-456', 'Harry potter 4', 'illustration4.jpg', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 16.99, 322, '2022-01-31', 0),
 (4, '321-456-987', 'Harry Potter 1, l\'école des sorciers', 'hp1.png', 'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l\'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n\'a pas fait que survivre cinq siècles, mais s\'est aussi adapté à la bureautique informatique, sans que son contenu n\'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l\'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n\'a pas fait que survivre cinq siècles, mais s\'est aussi adapté à la bureautique informatique, sans que son contenu n\'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l\'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n\'a pas fait que survivre cinq siècles, mais s\'est aussi adapté à la bureautique informatique, sans que son contenu n\'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.', 29.99, 350, '2022-02-01', 0),
@@ -398,7 +402,7 @@ CREATE TABLE IF NOT EXISTS `usager` (
   `code_postal` varchar(5) CHARACTER SET utf32 NOT NULL,
   `mail` varchar(255) CHARACTER SET utf32 NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `usager`
@@ -409,8 +413,8 @@ INSERT INTO `usager` (`id`, `nom`, `prenom`, `adresse`, `ville`, `code_postal`, 
 (2, 'Arnaud', 'Stéphane', '123 rue des lillas', 'Bayonne', '64100', 'usager2@biblio.fr'),
 (3, 'Bukowski', 'Charles', '143 rue des cordon bleu', 'Bayonne', '64100', 'usager3@biblio.fr'),
 (4, 'Sanchez', 'Mathieu', '123 Rue des lillas', 'Dax', '40100', 'demo@biblio.fr'),
-(5, 'Sanchez1', 'Mathieu1', '123 Avenue des cordon bleu', 'Dax', '40100', 'mail@mail.fr'),
-(6, 'Sanchez1', 'Mathieu1', '123 Avenue des cordon bleu', 'Dax', '40100', 'mail@mail.fr');
+(5, 'Sanchez2', 'Mathieu2', '123 Avenue des cordon bleu', 'Dax', '40100', 'mail@mail.fr'),
+(7, 'DemoAdd', 'DemoAdd', '123 place des DemoAdd', 'DemoAdd', '64100', 'DemoAdd@DemoAdd.fr');
 
 -- --------------------------------------------------------
 
@@ -441,7 +445,7 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
 INSERT INTO `utilisateur` (`id`, `nom`, `prenom`, `pseudo`, `mail`, `mot_de_passe`, `num_telephone`, `avatar`, `adresse`, `ville`, `code_postal`) VALUES
 (1, 'Jean-michel', 'bliblibli', 'JM-Does', 'jm-does@hotmail.fr', '$2y$10$qgAVLUXlFl/IWBr5mV9OYubSxppqR0yAWs4XCKb6ng2EjoYtlAzcC', '0506070809', 'user1.png', '123 rue des lillas', 'Dax', '40100'),
 (2, 'Bliblibli', 'bliblibli', 'Patricia-BerBer', 'BerBer@gmail.com', '$2y$10$DEmOUwzFQBEYpMshLAvXQO25CCMyy.bA3G0ewhp4VT5oRtSe0yLAq', '0605040302', 'user2.png', '147 rue du cordon bleu', 'Monaco', '99138'),
-(3, 'Bliblibli', 'bliblibli', 'admin', 'admin@bibliotheque.fr', '$2y$10$udC/ykKMfbo/.Gh9bawkKOZMNWydzyVzTgsXztVJFcKwGxwfQ7f26', '0102030405', 'user3.png', '159 Avenue de Flanbolo', 'Bayonne', '64100'),
+(3, 'Super', 'Admin', 'admin', 'admin@bibliotheque.fr', '$2y$10$udC/ykKMfbo/.Gh9bawkKOZMNWydzyVzTgsXztVJFcKwGxwfQ7f26', '0102030405', 'user3.png', '159 Avenue de Flanbolo', 'Bayonne', '64100'),
 (10, 'Bliblibli', 'bliblibli', 'blabla', 'blabla@blabla.Fr', '$2y$10$saTWXJKq5LCkUvAvTLAs0e0ijg.NeLcIf0841mV0L6CK43FArhvoq', '0502010304', 'user3.png', 'blablablabla', 'blabla', '40100'),
 (11, 'Bliblibli', 'bliblibli', 'blabla', 'blabla@blabla.Fr', '$2y$10$saTWXJKq5LCkUvAvTLAs0e0ijg.NeLcIf0841mV0L6CK43FArhvoq', '0502010304', 'user3.png', 'blablablabla', 'blabla', '40100'),
 (12, 'ezez', 'ezeze', 'zazzz', 'aaa@aaa.fr', '$2y$10$saTWXJKq5LCkUvAvTLAs0e0ijg.NeLcIf0841mV0L6CK43FArhvoq', '0102030405', 'aaa.png', '123 rue du petit', 'Dax', '40100'),
