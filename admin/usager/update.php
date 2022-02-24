@@ -52,28 +52,34 @@
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Modifier un usager</h1>
                     </div>
-
-                    <form action="" method="POST">
-                        <input type="hidden" name="id" value="">
+                    <form action="action.php" method="POST">
+                        <input type="hidden" name="id" value="<?= $usager['id'] ?>">
                         <div class="mb-3">
                             <label for="nom" class="form-label">Nom</label>
-                            <input type="text" class="form-control" id="nom" name="nom">
+                            <input type="text" class="form-control" id="nom" name="nom" value="<?= $usager['nom'] ?>">
                         </div>
                         <div class="mb-3">
                             <label for="prenom" class="form-label">Prénom</label>
-                            <input type="text" class="form-control" id="prenom" name="prenom">
+                            <input type="text" class="form-control" id="prenom" name="prenom" value="<?= $usager['prenom'] ?>">
                         </div>
                         <div class="mb-3">
                             <label for="adresse" class="form-label">Adresse</label>
-                            <input type="text" class="form-control" id="adresse" name="adresse">
+                            <input type="text" class="form-control" id="adresse" name="adresse" value="<?= $usager['adresse'] ?>">
                         </div>
                         <div class="mb-3">
                             <label for="code_postal" class="form-label">Code postal</label>
-                            <input type="text" class="form-control" id="code_postal" name="code_postal">
+                            <input type="text" class="form-control" id="code_postal" name="code_postal" value="<?= $usager['code_postal'] ?>">
                         </div>
                         <div class="mb-3">
                             <label for="ville" class="form-label">Ville</label>
-                            <input type="text" class="form-control" id="ville" name="ville">
+                            <input type="text" class="form-control" id="ville" name="ville" value="<?= $usager['ville'] ?>">
+                        </div>
+                        <div class="mb-3">
+                            <label for="mail" class="form-label">Mail</label>
+                            <input type="text" class="form-control" id="mail" name="mail" value="<?= $usager['mail'] ?>">
+                        </div>
+                        <div class="mb-3 text-center">
+                            <input type="submit" value="Modifier" name="btn_update_usager" class="btn btn-primary">
                         </div>
                     </form>
                 </div>

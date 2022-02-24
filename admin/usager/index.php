@@ -42,7 +42,7 @@
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Liste des usagers</h1>
                     </div>
-
+                    <a href="add.php" class="btn btn-primary my-2">Ajouter un usager</a>
                     <table class="table">
                         <thead>
                             <tr>
