@@ -7,6 +7,7 @@
     <title>Contact site bibliothèque</title>
   </head>
   <body>
+  <?php include 'include/menu.php'; ?>
     <div class="container">
       <h1 class="text-center mt-3">Contact site bibliothèque</h1>
       <form action="" method="POST">

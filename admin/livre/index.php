@@ -75,6 +75,7 @@
                                 <th scope="col">n° ISBN</th>
                                 <th scope="col">Illustration</th>
                                 <th scope="col">Titre</th>
+                                <th scope="col">Catégories</th>
                                 <th scope="col">Résume</th>
                                 <th scope="col">Prix</th>
                                 <th scope="col">date achat</th>
@@ -92,6 +93,7 @@
                                     <td><?= $livre['num_ISBN'] ?></td>
                                     <td>@mdo</td>
                                     <td><a href="single.php?id=<?= $livre['id'] ?>"><?= $livre['titre'] ?></a></td>
+                                    <td><?= getCategories($livre['id'], $bdd); ?></td>
                                     <td><?= substr(htmlentities($livre['resume']), 0, 100) ?> [...]</td>
                                     <td><?= $livre['prix'] ?> €</td>
                                     <td><?= $date->format('d/m/Y') ?></td>
