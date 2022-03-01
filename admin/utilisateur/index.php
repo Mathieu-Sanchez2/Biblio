@@ -72,7 +72,7 @@
                                     <td><?= $utilisateur['num_telephone'] ?></td>
                                     <td><?= $utilisateur['adresse'] . ',' . $utilisateur['ville'] . ' ' . $utilisateur['code_postal']?></td>
                                     <td><img width="75px" height="75px" src="<?= URL_ADMIN ?>img/avatar/<?= $utilisateur['avatar'] ?>" alt=""></td>
-                                    <td><a href="" class="btn btn-warning">Modifier</a></td>
+                                    <td><a href="update.php?id=<?= $utilisateur['id'] ?>"" class="btn btn-warning">Modifier</a></td>
                                     <td><a href="action.php?id=<?= $utilisateur['id'] ?>" class="btn btn-danger">Supprimer</a></td>
                                 </tr>
                             <?php endforeach; ?>

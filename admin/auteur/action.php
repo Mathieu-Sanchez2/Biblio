@@ -91,7 +91,6 @@
                 ':ville' => $ville,
                 ':mail' => $mail,
                 ':numero' => $numero,
-                ':photo' => $photo,
                 ':id' => $id
             ];
         }
