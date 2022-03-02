@@ -4,6 +4,16 @@
         header('location:' . URL_ADMIN . 'login.php');
         die; 
     }
+    include '../config/bdd.php';
+    
+    $sql = "SELECT * FROM livre WHERE disponibilite = 0";
+    $req = $bdd->query($sql);
+    $livres_dispo = $req->fetchAll(PDO::FETCH_ASSOC);
+
+    $sql = "SELECT * FROM usager";
+    $req = $bdd->query($sql);
+    $usagers = $req->fetchAll(PDO::FETCH_ASSOC);
+    // var_dump($livres_dispo,$usagers);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -38,6 +48,48 @@
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Créer une location</h1>
                     </div>
+
+                    <form action="action.php" method="POST">
+                        <div class="row">
+                            <div class="col">
+                                <div class="mb-3">
+                                    <label for="livre" class="form-label">Liste des livre disponible:</label>
+                                    <select class="mt-1 select-livre" name="livre" id="livre">
+                                        <?php  foreach($livres_dispo as $livre) : ?>
+                                            <option value="<?= $livre['id'] ?>"><?= $livre['num_ISBN'] . ' | ' . $livre['titre'] ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="mb-3">
+                                    <label for="usager" class="form-label">Liste des usagers</label>
+                                    <select class="mt-1 select-usager" name="usager" id="usager">
+                                        <?php  foreach($usagers as $usager) : ?>
+                                            <option value="<?= $usager['id'] ?>"><?= $usager['nom'] . ' ' . $usager['prenom'] ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="mb-3">
+                                    <label for="date_debut" class="form-label">Date de début de location :</label>
+                                    <input type="date" name="date_debut" class="form-control" id="date_debut" aria-describedby="emailHelp">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="mb-3">
+                                    <label for="date_fin" class="form-label">Date de fin de location (si connu) :</label>
+                                    <input type="date" name="date_fin" class="form-control" id="date_fin" aria-describedby="emailHelp">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center mb-3">
+                            <input type="submit" name="btn_add_location" value="Créer la location"class="btn btn-primary">
+                        </div>
+                    </form>
                 </div>
                 <!-- /.container-fluid -->
             </div>
